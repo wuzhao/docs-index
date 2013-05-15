@@ -1,0 +1,174 @@
+
+<!DOCTYPE HTML>
+<html lang="zh">
+  <head>
+    <meta charset="UTF-8">
+    <title>Arale - 基于SeaJS的前端解决方案</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="nico 0.3.1" />
+    <link type="image/x-icon" href="http://aralejs.org/static/css/favicon.ico" rel="icon">
+    <link rel="stylesheet" href="http://aralejs.org/static/css/normalize.css" />
+    <link rel="stylesheet" href="http://aralejs.org/static/css/site.css" />
+    <link rel="stylesheet" href="http://aralejs.org/static/css/solarized.css" />
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36247332-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    if (location.port) {
+       return;
+    }
+    ga.src = 'https://ssl.google-analytics.com/ga.js'; 
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+<script src="http://assets.spmjs.org/seajs/seajs/2.0.0/??sea-debug.js,plugin-combo.js,plugin-style.js"></script>
+<script>
+  (function() {
+
+  var query = location.search.substring(1).split('&');
+  var srcdir = 'src';
+
+  if (contain(query, 'dist')) {
+    srcdir = 'dist';
+  } else if (contain(query, 'cov')) {
+    srcdir = 'src-cov';
+  }
+
+  seajs.config({
+    alias: {
+      "$": 'jquery/jquery/1.7.2/jquery',
+      jquery: 'jquery/jquery/1.7.2/jquery',
+      "jquery-debug": 'jquery/jquery/1.7.2/jquery-debug',
+      mocha: "gallery/mocha/1.9.0/mocha",
+      expect: "gallery/expect/0.2.0/expect",
+      puerh: "popomore/puerh/0.1.0/puerh",
+      sinon: "gallery/sinon/1.6.0/sinon"
+    },
+    map: [function(uri) {
+      // resolve id
+      var m = uri.match(/arale\/arale.spmjs.org\/0.0.1\/(.*)/);
+      if (m) {
+        return resolve(m[1]);
+      }
+      return uri;
+    }],
+    comboExcludes: {test: function(uri) {
+      return uri.indexOf('http://assets.spmjs.org') === -1;
+    }}
+  });
+
+  function resolve(file) {
+    if (contain(query, 'debug')) {
+      if (file.indexOf('-debug') === -1) {
+        file = file.replace(/\.(\w+)$/, '-debug.$1');
+      }
+    }
+    return seajs.resolve(".//" + srcdir + "/" + file);
+  }
+
+  function contain(arr, value) {
+    for (var i in arr) {
+      if (arr[i] === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+      seajs.config({ alias: {"popup":"arale/popup/1.0.2/popup","autocomplete":"arale/autocomplete/1.2.0/autocomplete","placeholder":"arale/placeholder/1.0.1/placeholder","fixed":"arale/fixed/1.0.1/fixed","word-color":"afc163/word-color/1.0.0/word-color"}});
+    seajs.use([]);
+
+    seajs.config({alias: {
+      "$-debug": 'jquery/jquery/1.7.2/jquery-debug'
+    }});
+  })();
+</script>
+    <script src="http://aralejs.org/static/js/site.js"></script>
+    <!--[if lt IE 9]>
+    <script src="http://aralejs.org/static/js/html5shiv.js"></script>
+    <![endif]-->
+    
+<link rel="stylesheet" href="http://aralejs.org/static/style.css" />
+<script src="static/js/index.js"></script>
+
+  </head>
+  <body>
+    <div id="body-wrapper">
+      
+<div id="title-wrapper">
+  <h1 id="title" class="inline">
+    <a href="./">ATOM</a>
+  </h1>
+  <!-- <input type="text" class="inline" id="search" placeholder="搜索 ATOM 模块"> -->
+  <p id="description">{ 基于 SeaJS 的前端解决方案，随<span class='heart'>❤</span>构建互联网应用 }</p>
+</div>
+<div id="main-wrapper">
+  <div class="main-block" id="document-wrapper">
+    <div>
+      <h2>Document</h2>
+      <ol id="sidenav">
+        <li><a href="http://aralejs.org/docs/getting-started.html" target="_blank">arale 5 分钟快速上手</a></li>
+        <!-- <li><a href="http://aralejs.org/docs/installation.html" target="_blank">环境与工具配置</a></li> -->
+        <li><a href="http://aralejs.org/docs/develop-components.html" target="_blank">开发一个 Arale 模块</a></li>
+        <li><a href="http://aralejs.org/docs/version-control-in-project.html" target="_blank">代码组织实践</a></li>
+        <li><a href="http://aralejs.org/docs/online-status.html" target="_blank">模块线上状态</a></li>
+        <li><a href="http://aralejs.org/docs/rules.html" target="_blank">开发规范</a></li>
+      </ol>
+    </div>
+    <div style="display:none" id="J-alipay">
+      <h2>Alipay</h2>
+      <ol id="sidenav">
+        <li><a href="docs/alipay-overview.html">支付宝入门指南</a></li>
+      </ol>
+    </div>
+  </div>
+  <div class="main-block" id="module-wrapper">
+    <h2>Arale・<span class="catigory">基础设施</span></h2>
+    <div class="modules modules-infrastructure">
+    </div>
+
+    <h2>Arale・<span class="catigory">工具</span></h2>
+    <div class="modules modules-utility">
+      正在用绳命加载模块...
+    </div>
+
+    <h2>Arale・<span class="catigory">UI组件</span></h2>
+    <div class="modules modules-widget">
+    </div>
+
+    <h2>gallery・<span class="catigory">业界精选</span></h2>
+    <div class="modules modules-gallery">
+    </div>
+    
+    <h2>icbu・<span class="catigory">icbu通用组件</span></h2>
+    <div class="modules modules-icbu">
+    </div>
+    
+    <h2>icbu・<span class="catigory">icbu通用组件</span></h2>
+    <div class="modules modules-biz-common">
+    </div>
+  </div>
+  <div id="card">
+    <h2 class="card-name"></h2>
+    <p class="card-version"></p>
+    <p class="card-description"></p>
+  </div>
+</div>
+
+    </div>
+    <div id="footer-wrapper">
+      <footer>
+        <p class="powered"><a href="http://aralejs.org">Arale</a> •
+<a href="http://aliceui.org">Alice</a> •
+<a href="http://seajs.org">SeaJS</a> •
+<a href="https://spmjs.org">spmjs.org</a> •
+<a href="http://lab.lepture.com/nico/">nico</a>
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>
